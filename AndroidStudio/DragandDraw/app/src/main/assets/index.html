@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.dom.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.sound.min.js"></script>
+
+    <meta charset="utf-8" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <script>
+    function setup() {
+  createCanvas(window.innerWidth, window.innerHeight);
+}
+function draw() {
+    square(mouseX,mouseY,50);
+    fill(255,255,255);
+  if(mouseIsPressed) {
+   //newCanvas.fill(23,822,2);
+}else{
+  fill(780,456,23);
+}
+}
+  </script>
+    <pre>Draw Something Awesome Down Below</pre><hr>
+</div>
+</body>
+<style>
+    body{
+    position: fixed;
+    outline:2px black;
+    font-family: 'Open Sans', sans-serif
+}
+button{
+    height: 20;
+    width: 350px;
+    background-color:lightPink;
+}
+</style>
+</html>

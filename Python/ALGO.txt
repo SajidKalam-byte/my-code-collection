@@ -1,0 +1,157 @@
+######SMS Spam Collection#########
+Naive Bayes Algo
+from sklearn.model_selection import train_test_split
+from sklearn.naive_bayes import GaussianNB
+from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
+
+# Split data into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Train the Gaussian Naive Bayes classifier
+gnb = GaussianNB()
+gnb.fit(X_train, y_train)
+
+# Make predictions on the testing set
+y_pred = gnb.predict(X_test)
+
+# Evaluate the classifier's performance
+accuracy = accuracy_score(y_test, y_pred)
+precision = precision_score(y_test, y_pred, pos_label='spam')
+recall = recall_score(y_test, y_pred, pos_label='spam')
+f1 = f1_score(y_test, y_pred, pos_label='spam')
+
+print("Accuracy:", accuracy)
+print("Precision:", precision)
+print("Recall:", recall)
+print("F1-score:", f1)
+
+
+
+
+-------------------------------------------------------------------------------
+Support Vector Machine
+from sklearn.model_selection import train_test_split
+from sklearn.svm import SVC
+from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
+from sklearn.preprocessing import StandardScaler
+
+# Assume 'X' is your numerical feature matrix and 'y' is the target labels
+
+# Split data into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Scale the features (recommended for SVM)
+scaler = StandardScaler()
+X_train = scaler.fit_transform(X_train)
+X_test = scaler.transform(X_test)
+
+# Train the SVM classifier
+svm = SVC(kernel='linear', probability=True)  # Set probability=True for precision-recall
+svm.fit(X_train, y_train)
+
+# Make predictions on the testing set
+y_pred = svm.predict(X_test)
+
+# Evaluate the classifier's performance
+accuracy = accuracy_score(y_test, y_pred)
+precision = precision_score(y_test, y_pred, pos_label='spam')
+recall = recall_score(y_test, y_pred, pos_label='spam')
+f1 = f1_score(y_test, y_pred, pos_label='spam')
+
+print("Accuracy:", accuracy)
+print("Precision:", precision)
+print("Recall:", recall)
+print("F1-score:", f1)
+
+
+
+----------------------------------------------------------------
+from sklearn.model_selection import train_test_split
+from sklearn.svm import SVC
+from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
+from sklearn.preprocessing import StandardScaler
+
+# Assume 'X' is your numerical feature matrix and 'y' is the target labels
+
+# Split data into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Scale the features (recommended for SVM)
+scaler = StandardScaler()
+X_train = scaler.fit_transform(X_train)
+X_test = scaler.transform(X_test)
+
+# Train the SVM classifier with RBF kernel
+svm_rbf = SVC(kernel='rbf', probability=True)  # Default values for gamma and C
+svm_rbf.fit(X_train, y_train)
+
+# Make predictions on the testing set
+y_pred = svm_rbf.predict(X_test)
+
+# Evaluate the classifier's performance
+accuracy = accuracy_score(y_test, y_pred)
+precision = precision_score(y_test, y_pred, pos_label='spam')
+recall = recall_score(y_test, y_pred, pos_label='spam')
+f1 = f1_score(y_test, y_pred, pos_label='spam')
+
+print("Accuracy:", accuracy)
+print("Precision:", precision)
+print("Recall:", recall)
+print("F1-score:", f1)
+
+
+------------------------------------------------
+RBF update 
+
+
+from sklearn.model_selection import train_test_split, GridSearchCV
+from sklearn.svm import SVC
+from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
+from sklearn.preprocessing import StandardScaler
+
+# Assume 'X' is your numerical feature matrix and 'y' is the target labels
+
+# Split data into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Scale the features (recommended for SVM)
+scaler = StandardScaler()
+X_train = scaler.fit_transform(X_train)
+X_test = scaler.transform(X_test)
+
+# Define the parameter grid
+param_grid = {'C': [0.1, 1, 10, 50, 100], 'gamma': [1, 0.1, 0.01, 0.001, 0.0001]}
+
+# Create the SVM classifier with RBF kernel
+svm_rbf = SVC(kernel='rbf', probability=True)
+
+# Perform grid search with 5-fold cross-validation
+grid_search = GridSearchCV(svm_rbf, param_grid, cv=5, scoring='f1', n_jobs=-1)
+grid_search.fit(X_train, y_train)
+
+# Get the best hyperparameters
+best_params = grid_search.best_params_
+print("Best Hyperparameters:", best_params)
+
+# Train the SVM with the best hyperparameters
+svm_best = SVC(kernel='rbf', probability=True, **best_params)
+svm_best.fit(X_train, y_train)
+
+# Make predictions on the testing set
+y_pred = svm_best.predict(X_test)
+
+# Evaluate the classifier's performance
+accuracy = accuracy_score(y_test, y_pred)
+precision = precision_score(y_test, y_pred, pos_label='spam')
+recall = recall_score(y_test, y_pred, pos_label='spam')
+f1 = f1_score(y_test, y_pred, pos_label='spam')
+
+print("Accuracy:", accuracy)
+print("Precision:", precision)
+print("Recall:", recall)
+print("F1-score:", f1)
+
+
+
+
+

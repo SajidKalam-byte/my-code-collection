@@ -1,0 +1,46 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'com.code.realtimelive'
+    //noinspection GrDeprecatedAPIUsage
+    compileSdkVersion 34
+    defaultConfig {
+        applicationId "com.code.realtimelive"
+        minSdkVersion 24
+        targetSdkVersion 34
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    buildFeatures {
+        viewBinding true
+    }
+}
+
+dependencies {
+    implementation group: 'com.google.android.material', name: 'material', version: '1.9.0'
+    implementation group: 'androidx.appcompat', name: 'appcompat', version: '1.6.1'
+    implementation group: 'androidx.camera', name: 'camera-core', version: '1.4.0-alpha01'
+    implementation group: 'androidx.camera', name: 'camera-camera2', version: '1.4.0-alpha01'
+    implementation group: 'androidx.camera', name: 'camera-lifecycle', version: '1.4.0-alpha01'
+    implementation group: 'junit', name: 'junit', version: '4.13.2'
+    implementation 'androidx.compose.ui:ui-tooling-preview:1.5.1'
+    implementation 'androidx.camera:camera-view:1.2.3'
+    androidTestImplementation group: 'androidx.test.ext', name: 'junit', version: '1.1.5'
+    androidTestImplementation group: 'androidx.test.espresso', name: 'espresso-core', version: '3.5.1'
+}

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <form id="form" onsubmit="return validate()">
+        <label>Name</label><br>
+        <input type="text" name="name" id="name"><br>
+        <label>Email<br><input type="email" name="email" id="email" /></label><br>
+        <label>Age<br><input type="text" name="age" id="age"></label><br><br>
+        <label>Number<br><input type="tel" name="number" id="number" /></label><br>
+        <input type="submit" name="submit" value="Submit">
+    </form>
+</body>
+<script>
+    function validate() {
+        const name = document.getElementById("name").value;
+        const email = document.getElementById("email").value;
+        const age = document.getElementById("age").value;
+        const number = document.getElementById("number").value;
+        if (name === "") {
+            alert("Name is required");
+            return false;
+        }
+        if (email === "") {
+            alert("Email is required");
+            return false;
+        }
+        if (age === "" || age < 1 || age > 100) {
+            alert("Enter age between 1 to 100");
+            return false;
+        }
+        if (number === "" || number<10 ) {
+            alert("Enter a correct 10 digit phone number");
+            return false;
+        }
+        return true;
+    }
+</script>
+</html>
+
+
